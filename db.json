@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/json-server/schema.json",
+  "users": [
+  ],
+  "salles": [
+  ],
+  "reservations": [
+  ],
+  "roles": [
+  ]
+}
