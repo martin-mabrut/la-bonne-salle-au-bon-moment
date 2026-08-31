@@ -13,6 +13,12 @@ function UpdateReservation() {
         "user_id": string
     }
 
+    interface ReservationForm { 
+        "salle_id": string,
+        "date_debut": string,
+        "date_fin": string, 
+    }
+
     const {id} = useParams();
 
     const [reservation, setReservation] = useState<Reservation | null>(null);
@@ -44,7 +50,23 @@ function UpdateReservation() {
         });
     }
 
-    function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+    async function putReservation(id: string, donnees: ReservationForm) {
+        const response = await fetch(`http://localhost:3000/reservations/${id}`, {
+            method: "PUT",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(donnees),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        return response.json();
+        }
+
+    async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
 
         event.preventDefault();
 
@@ -59,10 +81,13 @@ function UpdateReservation() {
             "date_fin": form.date_fin,
             "user_id": reservation.user_id
         });
+
+        if(typeof id === "string") {
+        await putReservation(id, form);
+        }
     }
 
-    function postReservation() {
-    }
+    
 
 return  <div>
             <form onSubmit={handleSubmit}>
