@@ -1,13 +1,12 @@
 import { useState } from "react";
 
 function CreateRoom() {
-    const [form, setForm] = useState({ id: "", name: "", capacity: "" });
+    const [form, setForm] = useState<{ name: string, capacity: number }>();
 
     function handleChange(event) {
       console.log(event.target.value);
       setForm({...form,
         [event.target.name]: event.target.value,
-        [event.target.capacity]: event.target.value
       });
     }
 
@@ -19,10 +18,10 @@ function CreateRoom() {
     return (
     <>
       <label htmlFor="">nom de la salle (4 caractères minimum)</label>
-      <input type="text" defaultValue={form.name} onChange={handleChange}/>
+      <input type="text" name="name" value={form?.name} onChange={handleChange}/>
 
       <label htmlFor="">capacité de la salle (nombre de personnes)</label>
-      <input type="number" defaultValue={form.capacity} />
+      <input type="number" name="capacity" value={form?.capacity} onChange={handleChange} />
       <button type="submit" onClick={handleSubmit}>Ajouter</button>
     </>
   )
