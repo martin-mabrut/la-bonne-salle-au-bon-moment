@@ -1,16 +1,62 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { UserContext } from "../context/UserContext";
 
 function LoginUser() {
+
+    const context = useContext(UserContext);
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
+
+    const { login } = context;
+
     async function onSubmit(data) {
         console.log(data);
+        try {
+            const response = await fetch(
+                `http://localhost:3000/users?email=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.password)}`
+            );
 
+            if (!response.ok) {
+                throw new Error("Erreur lors de la connexion");
+            }
 
+            const users = await response.json();
 
+            // Aucun utilisateur trouvé
+            if (users.length === 0) {
+                alert("Email ou mot de passe incorrect");
+                return;
+            }
+            const user = users[0];
+
+            const roleResponse = await fetch(
+                `http://localhost:3000/roles/${user.roleId}`
+            );
+
+            const role = await roleResponse.json();
+
+            // On met l'utilisateur dans le contexte
+            login(user);
+
+            if (role.label === "formateur") {
+                navigate("/professor/dashboard");
+            }
+
+            if (role.label === "admin") {
+                navigate("/admin/dashboard");
+            }
+
+        } catch (error) {
+            console.error(error);
+            alert("Une erreur est survenue");
+        }
     }
     return (
         <>
@@ -18,7 +64,7 @@ function LoginUser() {
                 <div>
                     <label className="block text-sm font-medium text-black">Email</label>
                     <input type="email"
-                        className="block rounded-md bg-white border border:bg-[#AOAAAB]"
+                        className="block rounded-md bg-white border border:bg-[#A0AAAB]"
                         {...register("email",
                             { required: "L'email est obligatoire", })} />
                     {errors.email && (<p>{errors.email.message}</p>)}
@@ -26,7 +72,7 @@ function LoginUser() {
                 <div>
                     <label className="block text-sm font-medium text-black">Mot de passe</label>
                     <input type="password"
-                        className="block rounded-md bg-white border border:bg-[#AOAAAB]"
+                        className="block rounded-md bg-white border border:bg-[#A0AAAB]"
                         {...register("password",
                             { required: "Le mot de passe est obligatoire", })} />
                     {errors.password && (<p>{errors.password.message}</p>)}

@@ -1,16 +1,11 @@
 import { useState } from "react";
-import { UserContext } from "../context/UserContext";
+import { UserContext, type User } from "../context/UserContext";
 
-
-type User = {
-    email: string,
-    password: string;
-};
 
 function UserProvider({ children }) {
-    const [user, setUser] = useState<User>(null);
+    const [user, setUser] = useState<User | null>(null);
 
-    const login = data => {
+    const login = (data: User) => {
         setUser(data);
     };
     const logout = () => {

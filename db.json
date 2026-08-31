@@ -7,7 +7,7 @@
       "lastname": "Toto",
       "email": "email@email.fr",
       "password": "totototo",
-      "roles": "1"
+      "roleId": "1"
     }
   ],
   "salles": [],
