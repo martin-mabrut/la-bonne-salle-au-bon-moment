@@ -15,13 +15,13 @@ function CreateRoom() {
     function handleSubmit(event) {
         event.preventDefault();
 console.log(form?.name);
-        if (form?.name == undefined || form?.name.length == 0 ) {
-            setError("Le nom de la salle est obligatoire");
+        if (form?.name == undefined || form?.name.length < 4 ) {
+            setError("Le nom de la salle est obligatoire et doit comporter au moins 4 caractères");
             return;
         }
 
-        if (form?.capacity == undefined) {
-             setError("La capacité de la salle est obligatoire");
+        if (form?.capacity == undefined || form?.capacity == 0) {
+             setError("La capacité de la salle doit être supérieure à 0");
              return;
         }
 
