@@ -15,8 +15,8 @@ function CreateRoom() {
     function handleSubmit(event) {
         event.preventDefault();
 console.log(form?.name);
-        if (form?.name == undefined || form?.name.length < 4 ) {
-            setError("Le nom de la salle est obligatoire et doit comporter au moins 4 caractères");
+        if (form?.name == undefined || form?.name.length < 5 ) {
+            setError("Le nom de la salle est obligatoire et doit comporter au moins 5 caractères");
             return;
         }
 
@@ -34,7 +34,7 @@ console.log(form?.name);
 
     return (
         <>
-            <label htmlFor="">nom de la salle (4 caractères minimum)</label>
+            <label htmlFor="">nom de la salle (5 caractères minimum)</label>
             <input type="text" name="name" value={form?.name} onChange={handleChange} />
 
             <label htmlFor="">capacité de la salle (nombre de personnes)</label>
