@@ -16,7 +16,7 @@ function LoginUser() {
 
     const { login } = context;
 
-    async function onSubmit(data) {
+    async function onSubmit(data?) {
         try {
             const response = await fetch(
                 `http://localhost:3000/users?email=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.password)}`
@@ -70,30 +70,28 @@ function LoginUser() {
                     Page de connexion
                 </h1>
                 <form onSubmit={handleSubmit(onSubmit)}
-                    className="mt-8 flex w-full max-w-[295px] flex-col">
+                    className="mt-9 flex w-full max-w-[295px] flex-col">
                     <div>
-                        {/* <label className="block text-sm font-medium text-black">Email</label> */}
                         <input type="email"
-                            className="h-[30px] w-full rounded-md border border:bg-[#A0AAAB] border-2 bg-white"
-                            placeholder="identifiants ou adresse mail"
+                            className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"
+                            placeholder="Identifiants ou adresse mail"
                             {...register("email",
                                 { required: "L'email est obligatoire", })} />
-                        {errors.email && (<p>{errors.email.message}</p>)}
+                        {errors.email && (<p className="text-xs text-red-600 mb-5">{errors.email.message}</p>)}
                     </div>
                     <div>
-                        {/* <label className="block text-sm font-medium text-black">Mot de passe</label> */}
                         <input type="password"
-                            className="h-[30px] w-full rounded-md border border:bg-[#A0AAAB] border-2 bg-white"
+                            className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"
                             placeholder="Mot de passe"
                             {...register("password",
                                 { required: "Le mot de passe est obligatoire", })} />
-                        {errors.password && (<p>{errors.password.message}</p>)}
+                        {errors.password && (<p className="text-xs text-red-600 mb-5">{errors.password.message}</p>)}
                     </div>
                     <button type="submit"
-                        className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white"
+                        className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
                     > Se connecter </button>
                 </form>
-            </main>
+            </main >
         </>
     )
 }

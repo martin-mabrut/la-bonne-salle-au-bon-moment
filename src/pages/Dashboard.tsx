@@ -25,10 +25,10 @@ function Dashboard() {
     // Vérification de sécurité :
     // le rôle de l'URL doit correspondre
     // au rôle de l'utilisateur.
-    if (role !== user.roleLabel) {
+    if (role !== user?.roleLabel) {
         return (
             <Navigate
-                to={`/dashboard/${user.roleLabel}`}
+                to={`/dashboard/${user?.roleLabel}`}
                 replace
             />
         );
@@ -41,11 +41,11 @@ function Dashboard() {
             </h1>
 
             <p>
-                Bonjour {user.firstname} !
+                Bonjour {user?.firstname} !
             </p>
 
             <p>
-                Email : {user.email}
+                Email : {user?.email}
             </p>
 
             {role === "admin" && (
