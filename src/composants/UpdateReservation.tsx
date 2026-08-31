@@ -22,8 +22,20 @@ function UpdateReservation() {
         console.log(reservation)
     }, [reservation])
 
+    const [form, setForm] = useState({
+        salle_id:"",
+        date_debut:"",
+        date_fin:"",
+    })
+
+    function handleChange(event) {
+        setForm({
+            ...form,
+            [event.target.name]:event.target.value
+        });
+    }
+
     function postReservation() {
-        
     }
 
 return  <div>
