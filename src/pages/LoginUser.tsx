@@ -42,16 +42,22 @@ function LoginUser() {
 
             const role = await roleResponse.json();
 
-            // On met l'utilisateur dans le contexte
-            login(user);
+            //On enregistre l'info du rôle
+            const userWithRole = {
+                ...user,
+                roleLabel: role.label,
+            };
 
-            if (role.label === "formateur") {
-                navigate("/professor/dashboard");
-            }
+            console.log(
+                "Utilisateur avec rôle :",
+                userWithRole
+            );
 
-            if (role.label === "admin") {
-                navigate("/admin/dashboard");
-            }
+            //Stockage dans le contexte
+            login(userWithRole);
+
+            //Redirection
+            navigate(`/dashboard/${role.label}`);
 
         } catch (error) {
             console.error(error);

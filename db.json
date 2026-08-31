@@ -8,6 +8,22 @@
       "email": "email@email.fr",
       "password": "totototo",
       "roleId": "1"
+    },
+    {
+      "id": "2",
+      "firstname": "Titi",
+      "lastname": "Titi",
+      "email": "titi@email.fr",
+      "password": "titititi",
+      "roleId": "2"
+    },
+    {
+      "id": "3",
+      "firstname": "Tata",
+      "lastname": "Tata",
+      "email": "tata@email.fr",
+      "password": "tatatata",
+      "roleId": "3"
     }
   ],
   "salles": [],
@@ -15,7 +31,15 @@
   "roles": [
     {
       "id": "1",
-      "label": "formateur"
+      "label": "Administrateur"
+    },
+    {
+      "id": "2",
+      "label": "Formateur"
+    },
+    {
+      "id": "3",
+      "label": "Apprenant"
     }
   ]
 }

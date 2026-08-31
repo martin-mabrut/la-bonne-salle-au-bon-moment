@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router";
 import LoginUser from "./pages/LoginUser";
 import ProtectedRoute from "./composants/ProtectedRoute";
-import AdminDashboard from "./pages/AdminDashboard";
-import ProfessorDashboard from "./pages/ProfessorDashboard";
+import Dashboard from "./pages/Dashboard";
 
 function AppRoutes() {
     return (
@@ -10,14 +9,10 @@ function AppRoutes() {
             <Route path="/login" element={<LoginUser />} />
             <Route element={<ProtectedRoute />}>
                 <Route
-                    path="/admin/dashboard"
-                    element={<AdminDashboard />}
+                    path="/dashboard/:role"
+                    element={<Dashboard />}
                 />
 
-                <Route
-                    path="/professor/dashboard"
-                    element={<ProfessorDashboard />}
-                />
             </Route>
         </Routes>
     );
