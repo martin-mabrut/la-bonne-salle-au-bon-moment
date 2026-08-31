@@ -1,5 +1,4 @@
 {
-  "$schema": "./node_modules/json-server/schema.json",
   "users": [
     {
       "id": "1",
@@ -29,11 +28,11 @@
   "salles": [],
   "reservations": [
     {
-      "id": "1",
-      "salle_id": 1,
-      "date_debut": "2026-09-10",
-      "date_fin": "2026-09-11",
-      "user_id": 1
+      "salle_id": "",
+      "date_debut": "",
+      "date_fin": "",
+      "user_id": 1,
+      "id": "1"
     },
     {
       "salle_id": "2",
@@ -56,5 +55,6 @@
       "id": "3",
       "label": "Apprenant"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
