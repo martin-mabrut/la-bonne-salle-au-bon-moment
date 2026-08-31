@@ -142,16 +142,15 @@
   "roles": [
     {
       "id": "1",
-      "name": "apprenant"
+      "label": "Administrateur"
     },
     {
       "id": "2",
-      "name": "formateur"
+      "label": "Formateur"
     },
     {
       "id": "3",
-      "name": "administrateur"
+      "label": "Apprenant"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
