@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 
 function NewRoom() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors, isValid } } = useForm({mode: "onTouched"});
 
     async function onSubmit(data: FormData) {
         console.log(data);
@@ -41,7 +42,8 @@ function NewRoom() {
                         <input className="bg-white m-2 p-2 w-[212px]" type="number" {...register("capacity", { required: "La capacité ne doit pas être nulle" })} />
                         {errors.capacity && (<p>{errors.capacity.message}</p>)}
                     </div>
-                    <button className="w-44 text-white bg-black border-2 border-white rounded-xl p-2" type="submit">Valider</button>
+                    
+                    <button disabled={!isValid} className="w-44 text-white bg-black border-2 border-white rounded-xl p-2" type="submit">Valider</button>
                 </form>
         </>
     )
