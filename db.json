@@ -1,5 +1,31 @@
 {
-  "users": [],
+  "$schema": "./node_modules/json-server/schema.json",
+  "users": [
+    {
+      "id": "1",
+      "firstname": "Toto",
+      "lastname": "Toto",
+      "email": "email@email.fr",
+      "password": "totototo",
+      "roleId": "1"
+    },
+    {
+      "id": "2",
+      "firstname": "Titi",
+      "lastname": "Titi",
+      "email": "titi@email.fr",
+      "password": "titititi",
+      "roleId": "2"
+    },
+    {
+      "id": "3",
+      "firstname": "Tata",
+      "lastname": "Tata",
+      "email": "tata@email.fr",
+      "password": "tatatata",
+      "roleId": "3"
+    }
+  ],
   "salles": [],
   "reservations": [
     {
@@ -11,12 +37,24 @@
     },
     {
       "salle_id": "2",
-      "date_debut": "super",
-      "date_fin": "siper",
+      "date_debut": "2026-09-11",
+      "date_fin": "2026-09-12",
       "user_id": 2,
       "id": "2"
     }
   ],
-  "roles": [],
-  "$schema": "./node_modules/json-server/schema.json"
+  "roles": [
+    {
+      "id": "1",
+      "label": "Administrateur"
+    },
+    {
+      "id": "2",
+      "label": "Formateur"
+    },
+    {
+      "id": "3",
+      "label": "Apprenant"
+    }
+  ]
 }

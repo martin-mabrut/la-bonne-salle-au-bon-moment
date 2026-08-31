@@ -1,19 +1,17 @@
 import './App.css'
-import UpdateReservation from "./composants/UpdateReservation"
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { BrowserRouter } from 'react-router'
+import AppRoutes from './AppRoutes'
+import UserProvider from './providers/UserProvider'
 
 function App() {
 
   return (
     <>
-      <BrowserRouter>
-            <Routes>
-                <Route
-                    path="/reservations/:id"
-                    element={<UpdateReservation />}
-                />
-            </Routes>
+      <UserProvider>
+        <BrowserRouter>
+          <AppRoutes />
         </BrowserRouter>
+      </UserProvider>
     </>
   )
 }
