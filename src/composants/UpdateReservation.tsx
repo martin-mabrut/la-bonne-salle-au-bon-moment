@@ -1,12 +1,21 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import type { ChangeEvent } from "react";
 
 function UpdateReservation() {
 
+    interface Reservation { 
+        "id": string, 
+        "salle_id": string,
+        "date_debut": string,
+        "date_fin": string, 
+        "user_id": string
+    }
+
     const {id} = useParams();
 
-    const [reservation, setReservation] = useState(null);
+    const [reservation, setReservation] = useState<Reservation | null>(null);
 
     useEffect(() => {
         const fetchReservation = async () => {
@@ -28,15 +37,20 @@ function UpdateReservation() {
         date_fin:"",
     })
 
-    function handleChange(event) {
+    function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setForm({
             ...form,
             [event.target.name]:event.target.value
         });
     }
 
-    function handleSubmit(event) {
+    function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+
         event.preventDefault();
+
+        if (reservation===null) {
+            return;
+        }
 
         setReservation({
             "id": reservation.id,
