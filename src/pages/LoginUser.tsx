@@ -47,12 +47,7 @@ function LoginUser() {
                 ...user,
                 roleLabel: role.label,
             };
-
-            console.log(
-                "Utilisateur avec rôle :",
-                userWithRole
-            );
-
+            
             //Stockage dans le contexte
             login(userWithRole);
 
