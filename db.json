@@ -1,11 +1,21 @@
 {
   "$schema": "./node_modules/json-server/schema.json",
   "users": [
+    {
+      "id": "1",
+      "firstname": "Toto",
+      "lastname": "Toto",
+      "email": "email@email.fr",
+      "password": "totototo",
+      "roles": "1"
+    }
   ],
-  "salles": [
-  ],
-  "reservations": [
-  ],
+  "salles": [],
+  "reservations": [],
   "roles": [
+    {
+      "id": "1",
+      "label": "formateur"
+    }
   ]
 }

@@ -7,9 +7,10 @@ function LoginUser() {
         formState: { errors },
     } = useForm();
     async function onSubmit(data) {
-
         console.log(data);
-        // appel à l'API ici
+
+
+
     }
     return (
         <>
@@ -34,8 +35,6 @@ function LoginUser() {
                     className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white"
                 > Se connecter </button>
             </form>
-
-
         </>
     )
 }
