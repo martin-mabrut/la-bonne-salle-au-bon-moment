@@ -7,10 +7,6 @@ function ProtectedRoute() {
 
     const { user } = context;
 
-    if (!user) {
-        return <Navigate to="/login" replace />;
-    }
-
     // Pas connecté
     if (!user) {
         return (
