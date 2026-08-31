@@ -5,6 +5,12 @@
   "salles": [
   ],
   "reservations": [
+        {"id": 1,
+        "salle_id": 1,
+        "date_debut": "2026-09-10", 
+        "date_fin": "2026-09-11",
+        "user_id": 1
+        }
   ],
   "roles": [
   ]
