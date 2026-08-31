@@ -1,11 +1,13 @@
 {
-  "$schema": "./node_modules/json-server/schema.json",
-  "users": [
-  ],
+  "users": [],
   "salles": [
+    {
+      "name": "Salle de réunion",
+      "capacity": "134",
+      "id": "MmfuxUnk14M"
+    }
   ],
-  "reservations": [
-  ],
-  "roles": [
-  ]
+  "reservations": [],
+  "roles": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }

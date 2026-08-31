@@ -1,4 +1,6 @@
 import { useState } from "react";
+import {useForm} from "react-hook-form";
+
 
 function CreateRoom() {
     const [form, setForm] = useState<{ name?: string, capacity?: number }>();
