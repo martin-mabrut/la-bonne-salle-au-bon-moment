@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import {CreateReservation} from './pages/CreateReservation.tsx'
+import ReservationProvider from './context/ReservationProvider';
+import CreateReservation from './pages/CreateReservation';
 
 function App() {
 
   return (
     <>
-    <CreateReservation></CreateReservation>
+    <ReservationProvider>
+      <CreateReservation/>
+    </ReservationProvider>
     </>
   )
 }

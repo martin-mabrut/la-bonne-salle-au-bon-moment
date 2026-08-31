@@ -1,33 +1,20 @@
 import { createContext } from "react";
 
-export interface Reservation {
-    id:number,
-    salle_id:number,
-    date_debut:string,
-    date_fin:string,
-    user_id:number
+export type Reservation = {
+    id?:string,
+    salle_id?:number,
+    date_debut?:string,
+    date_fin?:string,
+    user_id?:number
 }
 
-export const ReservationContext = createContext(null);
-
-export async function getReservation(urlAPI:string):Promise<Reservation|unknown>{
-    try{
-        const response = await fetch(urlAPI);
-        const data:Reservation = await response.json();
-        if(!response.ok) {throw new Error("Erreur de récupération")};
-        return data;
-    } catch(error){
-        return error;
-    }
+export interface ReservationContextType extends Reservation {
+    getReservation:(id:string)=>void;
+    postReservation:(reservation:Reservation)=>void;
+    putReservation:(id:string, reservation:Reservation)=>void;
+    deleteReservation:(id:string)=>void;
 }
 
-export async function getReservationsList(urlAPI:string):Promise<Reservation[]|unknown>{
-    try{
-        const response = await fetch(urlAPI);
-        const data:Reservation = await response.json();
-        if(!response.ok) {throw new Error("Erreur de récupération")};
-        return data;
-    } catch(error){
-        return error;
-    }
-}
+export const ReservationContext = createContext<ReservationContextType>(
+    {} as ReservationContextType
+);
