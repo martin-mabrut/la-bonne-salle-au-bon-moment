@@ -1,11 +1,11 @@
 import { createContext } from "react";
 
 export type Reservation = {
-    id?:string,
-    salle_id?:number,
-    date_debut?:string,
-    date_fin?:string,
-    user_id?:number
+    id:string,
+    salle_id:string,
+    date_debut:string,
+    date_fin:string,
+    user_id:string
 }
 
 export interface ReservationContextType extends Reservation {
