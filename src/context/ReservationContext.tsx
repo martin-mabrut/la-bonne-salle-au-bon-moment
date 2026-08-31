@@ -13,6 +13,8 @@ export interface ReservationContextType extends Reservation {
     postReservation:(reservation:Reservation)=>void;
     putReservation:(id:string, reservation:Reservation)=>void;
     deleteReservation:(id:string)=>void;
+    getReservationList:()=>void;
+    reservationList:Reservation[];
 }
 
 export const ReservationContext = createContext<ReservationContextType>(

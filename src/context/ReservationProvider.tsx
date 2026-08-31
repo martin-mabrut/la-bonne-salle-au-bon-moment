@@ -5,6 +5,7 @@ import type { Reservation } from "./ReservationContext";
 function ReservationProvider({children}: { children?: React.ReactNode }) {
 
 const [reservation, setReservation] = useState<Reservation>({} as Reservation);
+const [reservationList, setReservationList] = useState<Reservation[]>([]);
 const url = 'http://localhost:3000/reservations';
 
 async function getReservation(id:string){
@@ -45,8 +46,14 @@ async function deleteReservation(id:string){
     const data = await res.json()
 }
 
+async function getReservationList(){
+    const res = await fetch(url);
+    const data = await res.json();
+    setReservationList(data);
+}
+
 return (
-<ReservationContext.Provider value={{getReservation, postReservation, putReservation,deleteReservation,...reservation}}>
+<ReservationContext.Provider value={{getReservation, postReservation, putReservation,deleteReservation, getReservationList,reservationList,...reservation}}>
 {children}
 </ReservationContext.Provider>
 );
