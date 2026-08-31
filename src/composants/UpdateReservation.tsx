@@ -6,17 +6,11 @@ import type { ChangeEvent } from "react";
 function UpdateReservation() {
 
     interface Reservation { 
-        "id": string, 
+        "id"?: string, 
         "salle_id": string,
         "date_debut": string,
         "date_fin": string, 
         "user_id": string
-    }
-
-    interface ReservationForm { 
-        "salle_id": string,
-        "date_debut": string,
-        "date_fin": string, 
     }
 
     const {id} = useParams();
@@ -32,6 +26,8 @@ function UpdateReservation() {
 
         fetchReservation();
     }, [id]);
+
+    
 
     useEffect(() => {
         console.log(reservation)
@@ -50,7 +46,7 @@ function UpdateReservation() {
         });
     }
 
-    async function putReservation(id: string, donnees: ReservationForm) {
+    async function putReservation(id: string, donnees: Reservation) {
         const response = await fetch(`http://localhost:3000/reservations/${id}`, {
             method: "PUT",
             headers: {
@@ -74,17 +70,18 @@ function UpdateReservation() {
             return;
         }
 
-        setReservation({
-            "id": reservation.id,
+        const newReservation = {
             "salle_id": form.salle_id,
             "date_debut": form.date_debut,
             "date_fin": form.date_fin,
             "user_id": reservation.user_id
-        });
+        };
 
         if(typeof id === "string") {
-        await putReservation(id, form);
+        await putReservation(id, newReservation);
         }
+
+        console.log(newReservation);
     }
 
     

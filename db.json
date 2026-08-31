@@ -11,8 +11,9 @@
     },
     {
       "salle_id": "2",
-      "date_debut": "dismoiqueçamarche",
-      "date_fin": "demain",
+      "date_debut": "super",
+      "date_fin": "siper",
+      "user_id": 2,
       "id": "2"
     }
   ],
