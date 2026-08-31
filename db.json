@@ -5,6 +5,41 @@
       "name": "Salle de réunion",
       "capacity": "134",
       "id": "MmfuxUnk14M"
+    },
+    {
+      "name": "Salle 13",
+      "capacity": "12",
+      "id": "hT51zU6kPqs"
+    },
+    {
+      "name": "Salle 150",
+      "capacity": "2",
+      "id": "D02_PXcRfDk"
+    },
+    {
+      "name": "Salle 69",
+      "capacity": "15",
+      "id": "pRWqLVkJoYs"
+    },
+    {
+      "name": "Salle",
+      "capacity": "23",
+      "id": "a7AH14GbZHE"
+    },
+    {
+      "name": "Salle 45",
+      "capacity": "11",
+      "id": "Q27ez1cM6mg"
+    },
+    {
+      "name": "Salle 66",
+      "capacity": "66",
+      "id": "fESfahVS-ws"
+    },
+    {
+      "name": "Salle 666",
+      "capacity": "40",
+      "id": "WlUFsgm3bBY"
     }
   ],
   "reservations": [],

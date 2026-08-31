@@ -1,10 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
+type RoomFormData = {
+    name: string;
+    capacity: number;
+};
 
 function NewRoom() {
-    const { register, handleSubmit, formState: { errors, isValid } } = useForm({mode: "onTouched"});
-
+    const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm<RoomFormData>({mode: "onChange"});
+    const [success, setSuccess] = useState(false);
+    
     async function onSubmit(data: FormData) {
         console.log(data);
 
@@ -22,6 +27,11 @@ function NewRoom() {
 
             const result = await response.json();
             console.log(result);
+
+            setSuccess(true);
+            reset();
+            setTimeout(() => setSuccess(false), 5000);
+
         } catch (error) {
             console.error("Erreur dans la création de salle:", error);
         }
@@ -45,6 +55,12 @@ function NewRoom() {
                     
                     <button disabled={!isValid} className="w-44 text-white bg-black border-2 border-white rounded-xl p-2" type="submit">Valider</button>
                 </form>
+
+            {success && (
+                <div className="fixed bottom-6 right-6 flex items-center gap-3 rounded-lg bg-green-600 px-5 py-3 text-white shadow-lg">
+                    <span>✓ Salle créée avec succès !</span>
+                </div>
+            )}
         </>
     )
 }
