@@ -16,8 +16,9 @@ function LoginUser() {
 
     const { login } = context;
 
-    async function onSubmit(data?) {
+    async function onSubmit(data) {
         try {
+            //Empêche l'email et le mot de passe en clair dans l'url
             const response = await fetch(
                 `http://localhost:3000/users?email=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.password)}`
             );
@@ -66,11 +67,11 @@ function LoginUser() {
     return (
         <>
             <main className="min-h-screen bg-[#BCCCDB] flex flex-col items-center">
-                <h1 className="mt-14 text-center text-4xl font-extrabold uppercase text-white">
+                <h2 className="mt-14 text-center text-4xl font-extrabold uppercase text-white">
                     Page de connexion
-                </h1>
+                </h2>
                 <form onSubmit={handleSubmit(onSubmit)}
-                    className="mt-9 flex w-full max-w-[295px] flex-col">
+                    className="mt-9 flex w-full max-w-[295px] flex flex-col">
                     <div>
                         <input type="email"
                             className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"

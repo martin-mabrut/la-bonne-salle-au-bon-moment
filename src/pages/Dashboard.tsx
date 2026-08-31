@@ -11,12 +11,6 @@ function Dashboard() {
 
     const context = useContext(UserContext);
 
-    if (!context) {
-        throw new Error(
-            "Dashboard doit être utilisé dans UserProvider"
-        );
-    }
-
     const {
         user,
         logout,
