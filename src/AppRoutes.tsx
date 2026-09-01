@@ -7,19 +7,21 @@ import CreateReservation from "./pages/CreateReservation";
 import UpdateReservation from "./pages/UpdateReservation";
 import ViewReservation from "./pages/viewReservations";
 import NewRoom from "./pages/NewRoom";
+import UserList from "./pages/UserList";
 
 function AppRoutes() {
     return (
         <Routes>
             <Route path="/login" element={<LoginUser />} />
             <Route element={<ProtectedRoute />}>
-                <Route path="/dashboard/:role" element={<Dashboard />}/>
-                <Route path="/NewRoom" element={<NewRoom/>} />
+                <Route path="/dashboard/:role" element={<Dashboard />} />
+                <Route path="/NewRoom" element={<NewRoom />} />
+                <Route path="/signin" element={<FormCompte />} />
+                <Route path="/createreservation" element={<CreateReservation />} />
+                <Route path="/viewreservation" element={<ViewReservation />} />
+                <Route path="/reservations/:id" element={<UpdateReservation />} />
+                <Route path="/userlist" element={<UserList />} />
             </Route>
-            <Route path="/signin" element={<FormCompte />} />
-            <Route path="/createreservation" element={<CreateReservation/>}/>
-            <Route path="/viewreservation" element={<ViewReservation/>}/>
-            <Route path="/reservations/:id" element={<UpdateReservation />}/>
         </Routes>
     );
 }
