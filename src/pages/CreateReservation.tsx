@@ -3,10 +3,13 @@ import { ReservationContext } from "../context/ReservationContext";
 import type { Reservation } from "../context/ReservationContext";
 import { UserContext } from "../context/UserContext";
 import { useForm } from "react-hook-form";
+import { RoomContext } from "../context/RoomContext";
 import type { User } from "../context/UserContext";
 
 function CreateReservation(){
   const {getReservation,postReservation, putReservation, deleteReservation,getReservationList,reservationList,...reservation} = useContext(ReservationContext);
+  const {getRoom, postRoom, putRoom,deleteRoom, getRoomList,roomList,...room} = useContext(RoomContext);
+  useEffect(()=>{getRoomList},[]);
   useEffect(()=>{getReservationList()},[postReservation]);
   const {user, userList,getUserList}=useContext(UserContext);
   useEffect(()=>{getUserList()},[]);
@@ -46,8 +49,8 @@ function CreateReservation(){
     <div>
       <label>Salle</label>
       <select id="selectmethod" defaultValue="" {...register("salle_id",{required:"Salle Obligatoire"})} className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white">
-        {salleListe.map((salle)=>(
-          <option key={salle} value={salle}>{salle}</option>
+        {roomList.map((room)=>(
+          <option key={room.id} value={room.id}>{room.name} / capacité : {room.capacity}</option>
         ))}
       </select>
       {errors.salle_id && (<p className="text-black-500 font-bold text-sm">{errors.salle_id.message}</p>)}
