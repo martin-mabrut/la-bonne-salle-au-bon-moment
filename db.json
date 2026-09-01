@@ -50,6 +50,11 @@
       "name": "Coucou",
       "capacity": "29",
       "id": "XGT0ZYl_teM"
+    },
+    {
+      "name": "TestSalle35",
+      "capacity": "25",
+      "id": "SbpalPSRxpA"
     }
   ],
   "reservations": [],
