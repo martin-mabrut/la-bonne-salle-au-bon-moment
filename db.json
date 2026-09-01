@@ -121,31 +121,6 @@
       "id": "CYNxSsu091o"
     }
   ],
-  "salles": [],
-  "reservations": [
-    {
-      "salle_id": "3",
-      "user_id": "2",
-      "date_debut": "2026-09-08",
-      "date_fin": "2026-09-09",
-      "id": "ZkK2-_RIOoM"
-    }
-  ],
-  "roles": [
-    {
-      "id": "1",
-      "label": "Administrateur"
-    },
-    {
-      "id": "2",
-      "label": "Formateur"
-    },
-    {
-      "id": "3",
-      "label": "Apprenant"
-    }
-  ],
-  "users": [],
   "salles": [
     {
       "name": "Salle de réunion",
@@ -201,9 +176,43 @@
       "name": "TestSalle35",
       "capacity": "25",
       "id": "SbpalPSRxpA"
+    },
+    {
+      "name": "salle 2",
+      "capacity": "20",
+      "id": "ZUfH4osX9nc"
     }
   ],
-  "reservations": [],
-  "roles": [],
+  "reservations": [
+    {
+      "salle_id": "1",
+      "date_debut": "2026-09-10",
+      "date_fin": "2026-09-11",
+      "user_id": "1",
+      "id": "1"
+    },
+    {
+      "salle_id": "2",
+      "date_debut": "2026-09-11",
+      "date_fin": "2026-09-12",
+      "user_id": "2",
+      "id": "2"
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "label": "Administrateur"
+    },
+    {
+      "id": "2",
+      "label": "Formateur"
+    },
+    {
+      "id": "3",
+      "label": "Apprenant"
+    }
+  ],
+
   "$schema": "./node_modules/json-server/schema.json"
 }
