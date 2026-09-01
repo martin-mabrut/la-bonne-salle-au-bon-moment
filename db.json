@@ -1,32 +1,55 @@
 {
   "users": [
     {
-      "lastname": "sqdsqd",
-      "firstname": "lkjd",
-      "password": "qdmlkljkj",
+      "lastname": "Bob",
+      "firstname": "Dylan",
+      "email": "bob@dylan.com",
+      "password": "bobdylan",
+      "roleId": "1",
+      "id": "9jKy2_r-sic"
+    },
+    {
+      "lastname": "Luc",
+      "firstname": "Joe",
+      "email": "luc@joe.fr",
+      "password": "lucjoe",
       "roleId": "2",
-      "email": "LDKSSD@ju.ki",
-      "id": "CYNxSsu091o"
-    },
-    {
-      "lastname": "toto1",
-      "firstname": "toto1",
-      "password": "totototot",
-      "roleId": "1",
-      "email": "toto1@toto.fr",
-      "id": "w0OYe7e_1mo"
-    },
-    {
-      "lastname": "toto2",
-      "firstname": "toto2",
-      "password": "sqdsqdqdPi",
-      "roleId": "1",
-      "email": "toto2@tot.fr",
-      "id": "GhjQIiTr66M"
+      "id": "cCfEPjKKl0A"
     }
   ],
-  "salles": [],
-  "reservations": [],
+  "salles": [
+    {
+      "name": "Salle de réunion",
+      "capacity": "134",
+      "id": "MmfuxUnk14M"
+    },
+    {
+      "name": "Salle 45",
+      "capacity": "25",
+      "id": "Q27ez1cM6mg"
+    },
+    {
+      "name": "Salle 32",
+      "capacity": "40",
+      "id": "fESfahVS-ws"
+    }
+  ],
+  "reservations": [
+    {
+      "salle_id": "MmfuxUnk14M",
+      "date_debut": "2026-09-10",
+      "date_fin": "2026-09-11",
+      "user_id": "1",
+      "id": "1"
+    },
+    {
+      "salle_id": "fESfahVS-ws",
+      "date_debut": "2026-09-11",
+      "date_fin": "2026-09-12",
+      "user_id": "2",
+      "id": "2"
+    }
+  ],
   "roles": [
     {
       "id": "1",

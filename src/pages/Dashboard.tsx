@@ -3,6 +3,7 @@ import {
     Link,
     Navigate,
     useParams,
+    Link
 } from "react-router";
 
 import { UserContext } from "../context/UserContext";
@@ -81,7 +82,7 @@ function Dashboard() {
                     <h2>
                         Espace formateur
                     </h2>
-
+                    <Link to="/reservations/1">Modifier réservation 1</Link>
                     <p>
                         Gestion des formations,
                         cours...
@@ -105,6 +106,9 @@ function Dashboard() {
 
             <button className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
                 onClick={logout}>
+
+
+
                 Se déconnecter
             </button>
         </div>

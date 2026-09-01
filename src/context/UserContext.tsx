@@ -14,6 +14,8 @@ type UserContextType = {
     user: User | null;
     login: (user: User) => void;
     logout: () => void;
+    userList:User[];
+    getUserList:()=>void;
 };
 
 export const UserContext = createContext<UserContextType | null>(null);
