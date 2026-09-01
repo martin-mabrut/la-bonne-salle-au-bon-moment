@@ -8,7 +8,7 @@ import { Link } from "react-router";
 
 function ViewReservation(){
     const {user, userList,getUserList}=useContext(UserContext);
-    useEffect(()=>{getUserList();console.log(user)},[]);
+    useEffect(()=>{getUserList()},[]);
     const {getReservation,postReservation, putReservation, deleteReservation,getReservationList,reservationList,...reservation} = useContext(ReservationContext);
     useEffect(()=>{getReservationList()},[]);
     const [userReservationList, setUserReservationList] = useState<Reservation[]>([]);
