@@ -66,12 +66,12 @@ function CreateReservation(){
     </div>
     <div>
       <label>Date début</label>
-      <input type="date" {...register("date_debut",{required:"Date début obligatoire"})} className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"/>
+      <input type="datetime-local" step="3600" {...register("date_debut",{required:"Date début obligatoire"})} className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"/>
       {errors.date_debut && (<p className="text-black-500 font-bold text-sm">{errors.date_debut.message}</p>)}
     </div>
     <div>
       <label>Date fin</label>
-      <input type="date" {...register("date_fin",{required:"Date fin obligatoire"})} className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"/>
+      <input type="datetime-local" step="3600" {...register("date_fin",{required:"Date fin obligatoire"})} className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"/>
       {errors.date_fin && (<p className="text-black-500 font-bold text-sm">{errors.date_fin.message}</p>)}
     </div>
     <p className="text-black-500 font-bold text-sm">{errorForm}</p>
