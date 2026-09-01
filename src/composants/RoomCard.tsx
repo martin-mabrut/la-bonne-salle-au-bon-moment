@@ -1,7 +1,7 @@
 export interface Salle {
     id: string;
     name: string;
-    capacity: string;
+    capacity: number;
 }
 
 interface RoomCardProps {
