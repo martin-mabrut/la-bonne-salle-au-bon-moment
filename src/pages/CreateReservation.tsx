@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 function CreateReservation(){
   const {getReservation,postReservation, putReservation, deleteReservation,getReservationList,reservationList,...reservation} = useContext(ReservationContext);
-  useEffect(()=>{getReservationList()},[]);
+  useEffect(()=>{getReservationList()},[postReservation]);
   const [errorForm, setErrorForm] = useState("");
   const salleListe = ["1","2","3","4","5"];
   const UtilisateurListe = ["1","2","3","4"];
