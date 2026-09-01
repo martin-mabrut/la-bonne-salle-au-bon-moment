@@ -31,7 +31,7 @@ function LoginUser() {
 
             // Aucun utilisateur trouvé
             if (users.length === 0) {
-                alert("Email ou mot de passe incorrect");
+                alert("Identifiants incorrects");
                 return;
             }
             const user = users[0];
@@ -47,7 +47,7 @@ function LoginUser() {
                 ...user,
                 roleLabel: role.label,
             };
-            
+
             //Stockage dans le contexte
             login(userWithRole);
 
