@@ -17,14 +17,12 @@
       "id": "cCfEPjKKl0A"
     }
   ],
-
   "salles": [
     {
       "name": "Salle de réunion",
       "capacity": "134",
       "id": "MmfuxUnk14M"
     },
-
     {
       "name": "Salle 45",
       "capacity": "25",
@@ -41,14 +39,14 @@
       "salle_id": "MmfuxUnk14M",
       "date_debut": "2026-09-10",
       "date_fin": "2026-09-11",
-      "user_id": "1",
+      "user_id": "9jKy2_r-sic",
       "id": "1"
     },
     {
       "salle_id": "fESfahVS-ws",
       "date_debut": "2026-09-11",
       "date_fin": "2026-09-12",
-      "user_id": "2",
+      "user_id": "9jKy2_r-sic",
       "id": "2"
     }
   ],
@@ -66,6 +64,5 @@
       "label": "Apprenant"
     }
   ],
-
   "$schema": "./node_modules/json-server/schema.json"
 }
