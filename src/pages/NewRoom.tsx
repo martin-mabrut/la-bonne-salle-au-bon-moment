@@ -32,7 +32,7 @@ function NewRoom() {
             setTimeout(() => {
                 setSuccess(false);
                 reset();
-            }, 3000);
+            }, 10000);
 
         } catch (error) {
             console.error("Erreur dans la création de salle:", error);
