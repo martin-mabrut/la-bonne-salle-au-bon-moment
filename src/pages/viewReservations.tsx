@@ -3,6 +3,7 @@ import { ReservationContext } from "../context/ReservationContext";
 import { UserContext } from "../context/UserContext";
 import type { Reservation } from "../context/ReservationContext";
 import ReservationCard from "../composants/ReservationCard";
+import { Link } from "react-router";
 
 
 function ViewReservation(){
@@ -24,6 +25,7 @@ function ViewReservation(){
 
     return(
         <>
+        <Link to="/createreservation"><button>Réserver une salle</button></Link>
         {reservationList.map((reservation)=>(
             <ReservationCard key={reservation.id} reservation={reservation}/>
         ))}
