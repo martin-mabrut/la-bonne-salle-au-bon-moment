@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useEffect } from "react";
-import { useParams, Navigate, useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import type { ChangeEvent } from "react";
 import { UserContext } from "../context/UserContext";
 
@@ -32,17 +32,21 @@ function UpdateReservation() {
         fetchReservation();
     }, [id]);
 
-    
-
-    useEffect(() => {
-        console.log(reservation)
-    }, [reservation])
-
     const [form, setForm] = useState({
         salle_id:"",
         date_debut:"",
         date_fin:"",
     })
+
+    useEffect(() => {
+        if (reservation) {
+            setForm({
+                salle_id: reservation.salle_id,
+                date_debut: reservation.date_debut,
+                date_fin: reservation.date_fin,
+            });
+        }
+    }, [reservation]);
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setForm({
@@ -75,10 +79,15 @@ function UpdateReservation() {
             return;
         }
 
-        if(reservation.user_id !== user.id || user.roleId !== "1"){
+        if(reservation.user_id !== user?.id && user?.roleId !== "1"){
             navigate(`/dashboard/${user?.roleLabel}`);
             return;
         }
+
+        const confirmed = window.confirm("Voulez-vous vraiment modifier cette réservation ?");
+            if (!confirmed) {
+            return;
+      }
 
         const newReservation = {
             "salle_id": form.salle_id,
@@ -89,9 +98,8 @@ function UpdateReservation() {
 
         if(typeof id === "string") {
         await putReservation(id, newReservation);
+        window.alert("Modifications effectuées avec succès.");
         }
-
-        console.log(newReservation);
     }
 
     
@@ -101,23 +109,24 @@ return  <div>
 
                 <div>
                     <label>Salle</label>
-                    <input name = "salle_id" value={form.salle_id} onChange={handleChange}/>
+                    <input name = "salle_id" value={form.salle_id} onChange={handleChange} required/>
                 </div>
 
                 <div>
                     <label>Date de début</label>
-                    <input name = "date_debut" value={form.date_debut} onChange={handleChange}/>
+                    <input name = "date_debut" value={form.date_debut} onChange={handleChange} required/>
                 </div>
 
                 <div>
                     <label>Date de fin</label>
-                    <input name = "date_fin" value={form.date_fin} onChange={handleChange}/>
+                    <input name = "date_fin" value={form.date_fin} onChange={handleChange} required/>
                 </div>
 
                 <button type="submit">Modifier</button>
                 <button>Annuler</button>
 
             </form>
+
         </div>
 
 };

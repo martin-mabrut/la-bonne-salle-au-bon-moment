@@ -28,17 +28,17 @@
   "salles": [],
   "reservations": [
     {
-      "salle_id": "",
-      "date_debut": "",
-      "date_fin": "",
-      "user_id": 1,
+      "salle_id": "1",
+      "date_debut": "2026-testfinal",
+      "date_fin": "2026-0testGLOUBI",
+      "user_id": "1",
       "id": "1"
     },
     {
       "salle_id": "2",
       "date_debut": "2026-09-11",
       "date_fin": "2026-09-12",
-      "user_id": 2,
+      "user_id": "2",
       "id": "2"
     }
   ],
