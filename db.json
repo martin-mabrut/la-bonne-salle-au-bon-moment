@@ -40,6 +40,16 @@
       "name": "Salle 666",
       "capacity": "40",
       "id": "WlUFsgm3bBY"
+    },
+    {
+      "name": "TestSalle66",
+      "capacity": "15",
+      "id": "dLOKNjCbk0s"
+    },
+    {
+      "name": "Coucou",
+      "capacity": "29",
+      "id": "XGT0ZYl_teM"
     }
   ],
   "reservations": [],
