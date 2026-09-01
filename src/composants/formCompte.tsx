@@ -82,12 +82,12 @@ function FormCompte() {
                             <label>Last Name</label>
                             <input type="text" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"
                                 {...register("lastname", { required: true })} />
-                            {errors.nom && <p>{errors.nom.message}</p>}
+                            {errors.lastname && <p>{errors.lastname.message}</p>}
                         </div>
                         <div>
                             <label>first Name</label>
                             <input type="text" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white" {...register("firstname")} />
-                            {errors.prenom && <p>{errors.prenom.message}</p>}
+                            {errors.firstname && <p>{errors.firstname.message}</p>}
                         </div>
                         <div>
                             <label>Email</label>
