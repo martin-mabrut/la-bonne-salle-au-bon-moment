@@ -7,14 +7,14 @@ import Dashboard from "./pages/Dashboard";
 function AppRoutes() {
     return (
         <Routes>
-            <Route path="/signin" element={<FormCompte />} />
+
             <Route path="/login" element={<LoginUser />} />
             <Route element={<ProtectedRoute />}>
                 <Route
                     path="/dashboard/:role"
                     element={<Dashboard />}
                 />
-
+                <Route path="/signin" element={<FormCompte />} />
             </Route>
         </Routes>
     );

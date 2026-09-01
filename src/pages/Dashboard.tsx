@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import {
+    Link,
     Navigate,
     useParams,
 } from "react-router";
@@ -29,33 +30,53 @@ function Dashboard() {
     }
 
     return (
-        <div>
-            <h1>
-                Dashboard {role}
-            </h1>
+        <div className="min-h-screen bg-[#BCCCDB] flex flex-col items-center" >
+            <h2 className="text-center text-4xl font-bold uppercase text-black mb-14">
+                Espace {role}
+            </h2>
 
-            <p>
-                Bonjour {user?.firstname} !
-            </p>
+            {role === "Administrateur" && (
+                <div >
 
-            <p>
-                Email : {user?.email}
-            </p>
+                    <div className="grid grid-cols-2 gap-5 mb-5">
+                        <div>  <Link to="/">
 
-            {role === "admin" && (
-                <div>
-                    <h2>
-                        Espace administrateur
-                    </h2>
+                            <button type="submit"
+                                className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
+                            > Liste des comptes </button>
+                        </Link>
+                        </div>
 
-                    <p>
-                        Gestion des utilisateurs,
-                        salles, réservations...
-                    </p>
+                        <div>
+                            <Link to="/signin">
+                                <button type="submit"
+                                    className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
+                                > Créer un compte </button>
+                            </Link>
+
+                        </div>
+                        <div>
+                            <Link to="/">
+                                <button type="submit"
+                                    className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
+                                > Liste des salles </button>
+                            </Link>
+                        </div>
+
+
+                        <div>
+                            <Link to="/NewRoom">
+                                <button type="submit"
+                                    className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
+                                > Créer une salle </button>
+                            </Link>
+                        </div>
+
+                    </div>
                 </div>
             )}
 
-            {role === "formateur" && (
+            {role === "Formateur" && (
                 <div>
                     <h2>
                         Espace formateur
@@ -68,7 +89,7 @@ function Dashboard() {
                 </div>
             )}
 
-            {role === "apprenant" && (
+            {role === "Apprenant" && (
                 <div>
                     <h2>
                         Espace apprenant
@@ -81,7 +102,9 @@ function Dashboard() {
                 </div>
             )}
 
-            <button onClick={logout}>
+
+            <button className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
+                onClick={logout}>
                 Se déconnecter
             </button>
         </div>

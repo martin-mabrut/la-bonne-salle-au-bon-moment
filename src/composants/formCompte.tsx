@@ -73,43 +73,50 @@ function FormCompte() {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <label>Last Name</label>
-                    <input type="text" {...register("lastname", { required: true })} />
-                    {errors.nom && <p>{errors.nom.message}</p>}
-                </div>
-                <div>
-                    <label>first Name</label>
-                    <input type="text" {...register("firstname")} />
-                    {errors.prenom && <p>{errors.prenom.message}</p>}
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="email" {...register("email")} />
-                    {errors.email && (<p>{errors.email.message}</p>)}
-                </div>
+            <div className="min-h-screen bg-[#BCCCDB] flex flex-col items-center">
 
+                <h2 className="text-center text-4xl font-bold uppercase text-black mb-10">Créer un nouveau compte</h2>
                 <div>
-                    <label>Password</label>
-                    <input type="password" {...register("password")} />
-                    {errors.password && (<p>{errors.password.message}</p>)}
-                </div>
-                <div>
-                    <label>Role</label>
-                    <div>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div>
+                            <label>Last Name</label>
+                            <input type="text" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"
+                                {...register("lastname", { required: true })} />
+                            {errors.nom && <p>{errors.nom.message}</p>}
+                        </div>
+                        <div>
+                            <label>first Name</label>
+                            <input type="text" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white" {...register("firstname")} />
+                            {errors.prenom && <p>{errors.prenom.message}</p>}
+                        </div>
+                        <div>
+                            <label>Email</label>
+                            <input type="email" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"{...register("email")} />
+                            {errors.email && (<p>{errors.email.message}</p>)}
+                        </div>
 
-                        <select id="roleId" {...register('roleId')}>
-                            <option value="">Select...</option>
-                            <option value="2">Formateur</option>
-                            <option value="1">Administrateur</option>
-                            <option value="3">Apprenant</option>
-                        </select>
-                        {errors.option && (<p>{errors.option.message}</p>)}
-                    </div>
+                        <div>
+                            <label>Password</label>
+                            <input type="password" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white" {...register("password")} />
+                            {errors.password && (<p>{errors.password.message}</p>)}
+                        </div>
+                        <div>
+                            <label>Role:</label>
+                            <div>
+
+                                <select id="roleId" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"  {...register('roleId')}>
+                                    <option value="">Select...</option>
+                                    <option value="2">Formateur</option>
+                                    <option value="1">Administrateur</option>
+                                    <option value="3">Apprenant</option>
+                                </select>
+                                {errors.option && (<p>{errors.option.message}</p>)}
+                            </div>
+                        </div>
+                        <button type="submit" className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white" > Valider </button>
+                    </form>
                 </div>
-                <button type="submit"> Valider </button>
-            </form>
+            </div>
         </>
     );
 }
