@@ -2,7 +2,8 @@ import { useState } from "react";
 import { UserContext, type User } from "../context/UserContext";
 
 
-function UserProvider({children}: { children?: React.ReactNode }) {
+
+function UserProvider({ children }: { children?: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
     const [userList, setUserList] = useState<User[]>([]);
     const login = (data: User) => {

@@ -5,6 +5,8 @@ import ProtectedRoute from "./composants/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import CreateReservation from "./pages/CreateReservation";
 
+import NewRoom from "./pages/NewRoom";
+
 function AppRoutes() {
     return (
         <Routes>
@@ -21,4 +23,11 @@ function AppRoutes() {
         </Routes>
     );
 }
+export default AppRoutes;
+            {/* <Route path="/CreateRoom" element={<CreateRoom />} /> */}
+            <Route path="/NewRoom" element={<NewRoom/>} />
+        </Routes>
+    );
+}
+
 export default AppRoutes;
