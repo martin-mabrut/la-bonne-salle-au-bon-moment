@@ -3,6 +3,10 @@ import FormCompte from "./composants/formCompte";
 import LoginUser from "./pages/LoginUser";
 import ProtectedRoute from "./composants/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
+import { Routes, Route } from "react-router-dom";
+// import CreateRoom from "./pages/CreateRoom";
+import NewRoom from "./pages/NewRoom";
+
 
 function AppRoutes() {
     return (
@@ -19,4 +23,11 @@ function AppRoutes() {
         </Routes>
     );
 }
+export default AppRoutes;
+            {/* <Route path="/CreateRoom" element={<CreateRoom />} /> */}
+            <Route path="/NewRoom" element={<NewRoom/>} />
+        </Routes>
+    );
+}
+
 export default AppRoutes;
