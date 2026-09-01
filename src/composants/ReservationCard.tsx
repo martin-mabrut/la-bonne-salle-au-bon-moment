@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import type { Reservation } from "../context/ReservationContext";
+import { ReservationContext } from "../context/ReservationContext";
 
 interface ReservationCardProps {
     reservation: Reservation;
@@ -9,6 +10,8 @@ interface ReservationCardProps {
 function ReservationCard({ reservation }: ReservationCardProps) {
     const navigate = useNavigate();
     const [salleName, setSalleName] = useState("");
+
+    const { deleteReservation } = useContext(ReservationContext);
 
     useEffect(() => {
         const fetchSalle = async () => {
@@ -25,16 +28,29 @@ function ReservationCard({ reservation }: ReservationCardProps) {
     }
 
     function handleSupprimer() {
+        deleteReservation(reservation.id)
     }
 
     return (
-        <div>
-            <p>Salle : {salleName}</p>
-            <p>Date de début : {reservation.date_debut}</p>
-            <p>Date de fin : {reservation.date_fin}</p>
+        <div className="w-full max-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+            <p className="text-sm text-gray-500">Salle : <span className="font-medium text-gray-900">{salleName}</span></p>
+            <p className="text-sm text-gray-500">Date de début : <span className="font-medium text-gray-900">{reservation.date_debut}</span></p>
+            <p className="text-sm text-gray-500">Date de fin : <span className="font-medium text-gray-900">{reservation.date_fin}</span></p>
 
-            <button onClick={handleModifier}>Modifier</button>
-            <button onClick={handleSupprimer}>Supprimer</button>
+            <div className="mt-4 flex gap-2">
+                <button
+                    onClick={handleModifier}
+                    className="flex-1 rounded-md bg-green-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-green-700"
+                >
+                    Modifier
+                </button>
+                <button
+                    onClick={handleSupprimer}
+                    className="flex-1 rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700"
+                >
+                    Supprimer
+                </button>
+            </div>
         </div>
     );
 }
