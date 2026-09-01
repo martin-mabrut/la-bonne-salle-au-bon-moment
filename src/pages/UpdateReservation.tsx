@@ -3,12 +3,18 @@ import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import type { ChangeEvent } from "react";
 import { UserContext } from "../context/UserContext";
+import { ReservationContext } from "../context/ReservationContext";
+import { RoomContext } from "../context/RoomContext";
 
 function UpdateReservation() {
 
     const context = useContext(UserContext);
     const user = context?.user; 
     const navigate = useNavigate();
+    const {getReservation,postReservation, deleteReservation,getReservationList,reservationList} = useContext(ReservationContext);
+    const {getRoom, postRoom, putRoom,deleteRoom, getRoomList,roomList,...room} = useContext(RoomContext);
+    useEffect(()=>{getRoomList()},[]);
+    useEffect(()=>{getReservationList()},[]);
 
     interface Reservation { 
         "id"?: string, 
@@ -109,17 +115,22 @@ return  <div>
 
                 <div>
                     <label>Salle</label>
-                    <input name = "salle_id" value={form.salle_id} onChange={handleChange} required/>
+                    <select name = "salle_id" value={form.salle_id} onChange={e=>{setForm({...form,salle_id:e.target.value})}} required>
+                        {roomList.map((room)=>(
+                            <option key={room.id} value={room.id}>{room.name} / capacité : {room.capacity}</option>
+                         ))}
+                    </select>
+
                 </div>
 
                 <div>
                     <label>Date de début</label>
-                    <input name = "date_debut" value={form.date_debut} onChange={handleChange} required/>
+                    <input type="datetime-local" step="3600" name = "date_debut" value={form.date_debut} onChange={handleChange} required/>
                 </div>
 
                 <div>
                     <label>Date de fin</label>
-                    <input name = "date_fin" value={form.date_fin} onChange={handleChange} required/>
+                    <input type="datetime-local" step="3600" name = "date_fin" value={form.date_fin} onChange={handleChange} required/>
                 </div>
 
                 <button type="submit">Modifier</button>

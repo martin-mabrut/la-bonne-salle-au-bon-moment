@@ -5,9 +5,10 @@ import { ReservationContext } from "../context/ReservationContext";
 
 interface ReservationCardProps {
     reservation: Reservation;
+    onChange:()=>void;
 }
 
-function ReservationCard({ reservation }: ReservationCardProps) {
+function ReservationCard({ reservation, onChange }: ReservationCardProps) {
     const navigate = useNavigate();
     const [salleName, setSalleName] = useState("");
 
@@ -28,7 +29,8 @@ function ReservationCard({ reservation }: ReservationCardProps) {
     }
 
     function handleSupprimer() {
-        deleteReservation(reservation.id)
+        deleteReservation(reservation.id);
+        onChange();
     }
 
     return (
