@@ -8,6 +8,7 @@ import UpdateReservation from "./pages/UpdateReservation";
 import ViewReservation from "./pages/viewReservations";
 import NewRoom from "./pages/NewRoom";
 import UserList from "./pages/UserList";
+import RoomList from "./pages/RoomList";
 
 function AppRoutes() {
     return (
@@ -21,8 +22,8 @@ function AppRoutes() {
                 <Route path="/viewreservation" element={<ViewReservation />} />
                 <Route path="/reservations/:id" element={<UpdateReservation />} />
                 <Route path="/userlist" element={<UserList />} />
+                <Route path="/roomlist" element={<RoomList />} />
             </Route>
         </Routes>
     );
-}
 export default AppRoutes;

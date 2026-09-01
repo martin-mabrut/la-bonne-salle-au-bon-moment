@@ -72,6 +72,10 @@ function Dashboard() {
                             </Link>
                         </div>
 
+                        <Link to="/viewreservation"><button type="submit"
+                                    className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
+                                > Mes réservations </button></Link>
+
                     </div>
                 </div>
             )}
@@ -82,8 +86,7 @@ function Dashboard() {
                         Espace formateur
                     </h2>
                     <p>
-                        Gestion des formations,
-                        cours...
+                        <Link to="/viewreservation">Mes réservations</Link>
                     </p>
                 </div>
             )}
