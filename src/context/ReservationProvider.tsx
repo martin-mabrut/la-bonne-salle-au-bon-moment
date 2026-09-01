@@ -9,47 +9,82 @@ const [reservationList, setReservationList] = useState<Reservation[]>([]);
 const url = 'http://localhost:3000/reservations';
 
 async function getReservation(id:string){
-    const res = await fetch(url+"/"+id);
-    const data = await res.json();
-    setReservation(data);
+    try{
+        const res = await fetch(url+"/"+id);
+        const data = await res.json();
+        if(!res.ok){
+            throw new Error("Erreur lors de la récupération");
+        }
+        setReservation(data);
+    }catch(error:any){
+        error && alert("Une erreur est survenue" + error.message);
+    }
 }
 
 async function postReservation(reservation:Reservation){
-    const res = await fetch(url, {
+    try{
+        const res = await fetch(url, {
         method:'POST',
         headers: {
         'Content-Type': 'application/json'
         },
         body: JSON.stringify(reservation)
-    });
-    const data = await res.json()
+        });
+        if(!res.ok){
+            throw new Error("Erreur lors de la récupération");
+        }
+        const data = await res.json()
+    }catch(error:any){
+        error && alert("Une erreur est survenue" + error.message);
+    }
 }
 
 async function putReservation(id:string, reservation:Reservation){
-    const res = await fetch((url+"/"+id), {
+    try{
+        const res = await fetch((url+"/"+id), {
         method:'PUT',
         headers: {
         'Content-Type': 'application/json'
         },
         body: JSON.stringify(reservation)
-    });
-    const data = await res.json()
+        });
+        if(!res.ok){
+            throw new Error("Erreur lors de la récupération");
+        }
+        const data = await res.json()
+    }catch(error:any){
+        error && alert("Une erreur est survenue" + error.message);
+    }
 }
 
 async function deleteReservation(id:string){
-    const res = await fetch((url+"/"+id), {
+    try{
+        const res = await fetch((url+"/"+id), {
         method:'DELETE',
         headers: {
         'Content-Type': 'application/json'
         },
-    });
-    const data = await res.json()
+        });
+        if(!res.ok){
+            throw new Error("Erreur lors de la récupération");
+        }
+        const data = await res.json()
+    }catch(error:any){
+        error && alert("Une erreur est survenue" + error.message);
+    }
 }
 
 async function getReservationList(){
-    const res = await fetch(url);
-    const data = await res.json();
-    setReservationList(data);
+    try{
+        const res = await fetch(url);
+        if(!res.ok){
+            throw new Error("Erreur lors de la récupération");
+        }
+        const data = await res.json();
+        setReservationList(data);
+    }catch(error:any){
+        error && alert("Une erreur est survenue" + error.message);
+    }
 }
 
 return (

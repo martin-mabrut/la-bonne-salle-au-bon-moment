@@ -1,46 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "nom": "Doe",
-      "prenom": "John",
-      "email": "john.doe@example.com",
-      "password": "password123",
-      "role": "apprenant"
-    },
-    {
-      "id": "2",
-      "nom": "Smith",
-      "prenom": "Jane",
-      "email": "jane.smith@example.com",
-      "password": "password456",
-      "role": "formateur"
-    },
-    {
-      "id": "3",
-      "nom": "Johnson",
-      "prenom": "Michael",
-      "email": "michael.johnson@example.com",
-      "password": "password789",
-      "role": "administrateur"
-    },
-    {
-      "nom": "toto",
-      "prenom": "toto",
-      "email": "email@email.com",
-      "password": "totototo",
-      "option": "formateur",
-      "id": "itknpb9_XuI"
-    },
-    {
-      "nom": "zer",
-      "prenom": "zaer",
-      "email": "zefzef@zer.erga",
-      "password": "zerzegzrg",
-      "option": "3",
-      "id": "bOsEo9MyGeg"
-    },
-    {
       "nom": "zer",
       "prenom": "zaer",
       "email": "zefzef@zer.erga",
@@ -162,7 +122,15 @@
     }
   ],
   "salles": [],
-  "reservations": [],
+  "reservations": [
+    {
+      "salle_id": "3",
+      "user_id": "2",
+      "date_debut": "2026-09-08",
+      "date_fin": "2026-09-09",
+      "id": "ZkK2-_RIOoM"
+    }
+  ],
   "roles": [
     {
       "id": "1",
