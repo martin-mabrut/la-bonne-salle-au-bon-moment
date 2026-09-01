@@ -54,12 +54,12 @@ function CreateReservation(){
     </div>
     <div>
       <label>Utilisateur</label>
-      {user.roleId=="1" && <select id="selectmethod" defaultValue="" {...register("user_id",{required:"Utilisateur Obligatoire"})}className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white">
+      {user!=null && user.roleId=="1" && <select id="selectmethod" defaultValue="" {...register("user_id",{required:"Utilisateur Obligatoire"})}className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white">
         {userList.map((user:User)=>(
           <option key={user.id} value={user.id}>{user.firstname} {user.lastname}</option>
         ))}
       </select>}
-      {user.roleId=="2" && <select id="selectmethod" defaultValue="" {...register("user_id",{required:"Utilisateur Obligatoire"})}className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white">
+      {user!=null && user.roleId=="2" && <select id="selectmethod" defaultValue="" {...register("user_id",{required:"Utilisateur Obligatoire"})}className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white">
         <option value={user.id}>{user.firstname} {user.lastname}</option>
       </select>}
       {errors.user_id && (<p className="text-black-500 font-bold text-sm">{errors.user_id.message}</p>)}
