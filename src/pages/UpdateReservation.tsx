@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useEffect } from "react";
-import { useParams, Navigate } from "react-router";
+import { useParams, Navigate, useNavigate } from "react-router";
 import type { ChangeEvent } from "react";
 import { UserContext } from "../context/UserContext";
 
@@ -8,6 +8,7 @@ function UpdateReservation() {
 
     const context = useContext(UserContext);
     const user = context?.user; 
+    const navigate = useNavigate();
 
     interface Reservation { 
         "id"?: string, 
@@ -75,10 +76,8 @@ function UpdateReservation() {
         }
 
         if(reservation.user_id !== user.id || user.roleId !== "1"){
-            <Navigate
-                to={`/dashboard/${user?.roleLabel}`}
-                replace
-            />
+            navigate(`/dashboard/${user?.roleLabel}`);
+            return;
         }
 
         const newReservation = {
