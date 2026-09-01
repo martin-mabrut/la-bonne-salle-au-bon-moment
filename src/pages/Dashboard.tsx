@@ -2,6 +2,7 @@ import { useContext } from "react";
 import {
     Navigate,
     useParams,
+    Link
 } from "react-router";
 
 import { UserContext } from "../context/UserContext";
@@ -80,6 +81,8 @@ function Dashboard() {
                     </p>
                 </div>
             )}
+
+            <Link to="/reservations/1">Modifier réservation 1</Link>
 
             <button onClick={logout}>
                 Se déconnecter
