@@ -81,7 +81,6 @@ function Dashboard() {
                     <h2>
                         Espace formateur
                     </h2>
-                    <Link to="/reservations/1">Modifier réservation 1</Link>
                     <p>
                         Gestion des formations,
                         cours...
