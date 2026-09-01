@@ -135,6 +135,30 @@
       "roleId": "1",
       "email": "eyezezail@epYupoddail.com",
       "id": "A68ywn6GhE4"
+    },
+    {
+      "nom": "sfdsf",
+      "prenom": "dqsdqsd",
+      "password": "dezdzdeqd",
+      "roleId": "1",
+      "email": "fufu@fifi.fr",
+      "id": "QcN9pMypJBY"
+    },
+    {
+      "nom": "dsqdsqd",
+      "prenom": "dsqfdsq",
+      "password": "qdsqdmllklk",
+      "roleId": "1",
+      "email": "tot@ftr.ju",
+      "id": "h_7LaaYAo0A"
+    },
+    {
+      "lastname": "sqdsqd",
+      "firstname": "lkjd",
+      "password": "qdmlkljkj",
+      "roleId": "2",
+      "email": "LDKSSD@ju.ki",
+      "id": "CYNxSsu091o"
     }
   ],
   "salles": [],
@@ -152,5 +176,6 @@
       "id": "3",
       "label": "Apprenant"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
