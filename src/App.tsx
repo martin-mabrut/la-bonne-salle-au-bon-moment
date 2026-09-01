@@ -1,15 +1,17 @@
-import { useState } from 'react'
 import './App.css'
-import ReservationProvider from './context/ReservationProvider';
-import CreateReservation from './pages/CreateReservation';
+import { BrowserRouter } from 'react-router'
+import AppRoutes from './AppRoutes'
+import UserProvider from './providers/UserProvider'
 
 function App() {
 
   return (
     <>
-    <ReservationProvider>
-      <CreateReservation/>
-    </ReservationProvider>
+      <UserProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </UserProvider>
     </>
   )
 }
