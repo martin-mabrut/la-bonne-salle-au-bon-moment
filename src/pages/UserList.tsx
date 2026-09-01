@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
+import UserCard from "../composants/UserCard";
 
 function UserList() {
     const { getUserList, userList } = useContext(UserContext);
@@ -8,13 +9,11 @@ function UserList() {
     return (
 
         <>
-
-            {userList.map((user) => (
-                <p key={user.id}>
-                    {user.lastname} {user.firstname} {user.email}
-                </p>
-            ))}
-
+            <div className="grid grid-cols-4 mt-10 p-5">
+                {userList.map((user) => (
+                    <UserCard key={user.id} user={user} />
+                ))}
+            </div>
         </>
     )
 }
