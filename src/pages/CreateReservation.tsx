@@ -22,13 +22,13 @@ function CreateReservation(){
 
  function onSubmit(data:Reservation){
   let isOk = true;
-  if(new Date(data.date_debut).getTime()>new Date(data.date_fin).getTime()){
+  if(new Date(data.date_debut).getTime()<new Date(data.date_fin).getTime()){
     setErrorForm("Date de fin inférieur à date de début")
     return
   }
   for(let resa of reservationList){
     if(data.salle_id==resa.salle_id){
-      if(!((new Date(data.date_fin).getTime()>new Date(resa.date_debut).getTime())||(new Date(data.date_debut).getTime()>new Date(resa.date_fin).getTime()))){
+      if(!((new Date(data.date_fin).getTime()<new Date(resa.date_debut).getTime())||(new Date(data.date_debut).getTime()>new Date(resa.date_fin).getTime()))){
         isOk=false;
       }
     }
