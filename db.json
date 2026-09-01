@@ -17,14 +17,12 @@
       "id": "cCfEPjKKl0A"
     }
   ],
-
   "salles": [
     {
       "name": "Salle de réunion",
       "capacity": "134",
       "id": "MmfuxUnk14M"
     },
-
     {
       "name": "Salle 45",
       "capacity": "25",
@@ -66,6 +64,5 @@
       "label": "Apprenant"
     }
   ],
-
   "$schema": "./node_modules/json-server/schema.json"
 }
