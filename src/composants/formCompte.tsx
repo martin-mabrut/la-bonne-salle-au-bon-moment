@@ -12,9 +12,9 @@ function FormCompte() {
     }
 
     const compteSchema = z.object({
-        nom: z.string()
+        lastname: z.string()
             .min(2).max(100),
-        prenom: z.string()
+        firstname: z.string()
             .min(2)
             .max(100),
         email: z
@@ -76,12 +76,12 @@ function FormCompte() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label>Last Name</label>
-                    <input type="text" {...register("nom", { required: true })} />
+                    <input type="text" {...register("lastname", { required: true })} />
                     {errors.nom && <p>{errors.nom.message}</p>}
                 </div>
                 <div>
                     <label>first Name</label>
-                    <input type="text" {...register("prenom")} />
+                    <input type="text" {...register("firstname")} />
                     {errors.prenom && <p>{errors.prenom.message}</p>}
                 </div>
                 <div>
@@ -101,8 +101,8 @@ function FormCompte() {
 
                         <select id="roleId" {...register('roleId')}>
                             <option value="">Select...</option>
-                            <option value="1">Formateur</option>
-                            <option value="2">Administrateur</option>
+                            <option value="2">Formateur</option>
+                            <option value="1">Administrateur</option>
                             <option value="3">Apprenant</option>
                         </select>
                         {errors.option && (<p>{errors.option.message}</p>)}
