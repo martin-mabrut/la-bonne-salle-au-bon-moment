@@ -10,7 +10,7 @@ function NewRoom() {
     const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm<RoomFormData>({mode: "onChange"});
     const [success, setSuccess] = useState(false);
     
-    async function onSubmit(data: FormData) {
+    async function onSubmit(data: RoomFormData) {
         console.log(data);
 
         try {
