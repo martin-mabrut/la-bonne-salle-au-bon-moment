@@ -176,6 +176,11 @@
       "name": "TestSalle35",
       "capacity": "25",
       "id": "SbpalPSRxpA"
+    },
+    {
+      "name": "salle 2",
+      "capacity": "20",
+      "id": "ZUfH4osX9nc"
     }
   ],
   "reservations": [

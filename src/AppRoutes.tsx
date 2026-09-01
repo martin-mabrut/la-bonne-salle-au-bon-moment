@@ -13,6 +13,8 @@ function AppRoutes() {
         <Routes>
             <Route path="/signin" element={<FormCompte />} />
             <Route path="/login" element={<LoginUser />} />
+            {/* <Route path="/CreateRoom" element={<CreateRoom />} /> */}
+            <Route path="/NewRoom" element={<NewRoom />} />
             <Route element={<ProtectedRoute />}>
                 <Route path="/dashboard/:role" element={<Dashboard />}/>
                 <Route path="/NewRoom" element={<NewRoom/>} />
