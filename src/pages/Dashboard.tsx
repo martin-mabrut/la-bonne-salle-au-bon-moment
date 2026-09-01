@@ -3,7 +3,6 @@ import {
     Link,
     Navigate,
     useParams,
-    Link
 } from "react-router";
 
 import { UserContext } from "../context/UserContext";
@@ -40,7 +39,7 @@ function Dashboard() {
                 <div >
 
                     <div className="grid grid-cols-2 gap-5 mb-5">
-                        <div>  <Link to="/">
+                        <div>  <Link to="/userlist">
 
                             <button type="submit"
                                 className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
@@ -57,7 +56,7 @@ function Dashboard() {
 
                         </div>
                         <div>
-                            <Link to="/">
+                            <Link to="/roomlist">
                                 <button type="submit"
                                     className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white"
                                 > Liste des salles </button>

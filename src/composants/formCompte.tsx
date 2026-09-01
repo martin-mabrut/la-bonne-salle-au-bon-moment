@@ -75,45 +75,59 @@ function FormCompte() {
         <>
             <div className="min-h-screen bg-[#BCCCDB] flex flex-col items-center">
 
-                <h2 className="text-center text-4xl font-bold uppercase text-black mb-10">Créer un nouveau compte</h2>
+                <h2 className="text-center text-4xl font-bold uppercase text-black">Création de compte</h2>
                 <div>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div>
-                            <label>Last Name</label>
-                            <input type="text" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"
-                                {...register("lastname", { required: true })} />
+                    <form className="flex flex-col items-center justify-center p-6 space-y-8 min-h-screen p-3" onSubmit={handleSubmit(onSubmit)}>
+                        <div className="flex flex-col items-center gap-2" >
+                            <div className="flex items-center gap-6">
+                                <label className="text-black bg-[#D9D9D9] p-2 w-[84px]" >Nom</label>
+                                <input type="text" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"
+                                    {...register("lastname", { required: true })} />
+                            </div>
                             {errors.lastname && <p>{errors.lastname.message}</p>}
                         </div>
-                        <div>
-                            <label>first Name</label>
+                        <div><div className="flex items-center gap-6">
+
+                            <label className="text-black bg-[#D9D9D9] p-2 w-[84px]" >Prénom</label>
                             <input type="text" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white" {...register("firstname")} />
-                            {errors.firstname && <p>{errors.firstname.message}</p>}
                         </div>
+                            {errors.firstname && <p>{errors.firstname.message}</p>}
+
+                        </div>
+
                         <div>
-                            <label>Email</label>
-                            <input type="email" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"{...register("email")} />
+                            <div className="flex items-center gap-6">
+                                <label className="text-black bg-[#D9D9D9] p-2 w-[84px]" >Email</label>
+                                <input type="email" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"{...register("email")} />
+                            </div>
                             {errors.email && (<p>{errors.email.message}</p>)}
                         </div>
 
                         <div>
-                            <label>Password</label>
-                            <input type="password" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white" {...register("password")} />
+                            <div className="flex items-center gap-6">
+
+                                <label className="text-black bg-[#D9D9D9] p-2 w-[84px]" >Mot de passe</label>
+                                <input type="password" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white" {...register("password")} />
+                            </div>
                             {errors.password && (<p>{errors.password.message}</p>)}
                         </div>
                         <div>
-                            <label>Role:</label>
-                            <div>
+                            <div className="flex items-center gap-6">
+                                <label className="text-black bg-[#D9D9D9] p-2 w-[84px]">Rôle:</label>
+                                <div>
 
-                                <select id="roleId" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"  {...register('roleId')}>
-                                    <option value="">Select...</option>
-                                    <option value="2">Formateur</option>
-                                    <option value="1">Administrateur</option>
-                                    <option value="3">Apprenant</option>
-                                </select>
-                                {errors.option && (<p>{errors.option.message}</p>)}
+                                    <select id="roleId" className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white"  {...register('roleId')}>
+                                        <option value="">Select...</option>
+                                        <option value="2">Formateur</option>
+                                        <option value="1">Administrateur</option>
+                                        <option value="3">Apprenant</option>
+                                    </select>
+                                    {errors.option && (<p>{errors.option.message}</p>)}
+
+                                </div>
                             </div>
                         </div>
-                        <button type="submit" className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white" > Valider </button>
+                        <button type="submit" className="w-44 text-white bg-black border-2 border-white rounded-xl p-2" > Valider </button>
                     </form>
                 </div>
             </div>
