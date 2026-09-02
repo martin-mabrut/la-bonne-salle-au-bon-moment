@@ -10,7 +10,7 @@ function ViewReservation(){
     const {user, userList,getUserList}=useContext(UserContext);
     useEffect(()=>{getUserList()},[]);
     const {getReservation,postReservation, putReservation, deleteReservation,getReservationList,reservationList,...reservation} = useContext(ReservationContext);
-    useEffect(()=>{getReservationList()},[]);
+    useEffect(()=>{getReservationList()},[reservationList]);
     const [userReservationList, setUserReservationList] = useState<Reservation[]>([]);
     useEffect(()=>{
         if(!user) {
