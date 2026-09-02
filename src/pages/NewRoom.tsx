@@ -11,8 +11,6 @@ function NewRoom() {
     const [success, setSuccess] = useState(false);
     
     async function onSubmit(data: RoomFormData) {
-        console.log(data);
-
         try {
             const response = await fetch("http://localhost:3000/salles", {
                 method: "POST",

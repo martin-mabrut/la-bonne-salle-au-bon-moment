@@ -5,27 +5,27 @@ import { UserContext } from "../context/UserContext";
 import { useForm } from "react-hook-form";
 import { RoomContext } from "../context/RoomContext";
 import type { User } from "../context/UserContext";
+import { redirect } from "react-router";
 
 function CreateReservation(){
   const {getReservation,postReservation, putReservation, deleteReservation,getReservationList,reservationList,...reservation} = useContext(ReservationContext);
   const {getRoom, postRoom, putRoom,deleteRoom, getRoomList,roomList,...room} = useContext(RoomContext);
-  useEffect(()=>{getRoomList},[]);
-  useEffect(()=>{getReservationList()},[postReservation]);
+  useEffect(()=>{getRoomList()},[]);
+  useEffect(()=>{getReservationList()},[]);
   const {user, userList,getUserList}=useContext(UserContext);
   useEffect(()=>{getUserList()},[]);
   const[success, setSuccess] = useState(false);
   const [errorForm, setErrorForm] = useState("");
-  const salleListe = ["1","2","3","4","5"];
 
   const{
     register,
     handleSubmit,
-    formState:{errors, isValid}, reset,
+    formState:{errors, isValid},
   }=useForm<Reservation>();
 
  function onSubmit(data:Reservation){
   let isOk = true;
-  if(new Date(data.date_debut).getTime()<new Date(data.date_fin).getTime()){
+  if(new Date(data.date_debut).getTime()>new Date(data.date_fin).getTime()){
     setErrorForm("Date de fin inférieur à date de début")
     return
   }
@@ -38,14 +38,14 @@ function CreateReservation(){
   }
   isOk?postReservation(data):setErrorForm("Salle indisponible sur ce créneau");
   isOk && setSuccess(true);
-  setTimeout(()=>{setSuccess(false);reset();},50000);
+  throw redirect("/viewreservation");
   }
 
   return(
     <>
     <main className="min-h-screen bg-[#BCCCDB] flex flex-col items-center">
       <h2 className="mt-14 text-center text-4xl font-extrabold uppercase text-white">Réserver un Créneau</h2>
-    <form onSubmit={handleSubmit(onSubmit)} onClick={()=>setErrorForm("")} className="mt-9 flex w-full max-w-[295px] flex flex-col">
+    <form onSubmit={(e)=>{e.preventDefault(); handleSubmit(onSubmit)()}} onClick={()=>setErrorForm("")} className="mt-9 flex w-full max-w-[295px] flex flex-col">
     <div>
       <label>Salle</label>
       <select id="selectmethod" defaultValue="" {...register("salle_id",{required:"Salle Obligatoire"})} className="h-[30px] w-full rounded-md border border-[#A0AAAB] mb-5 border-2 bg-white">

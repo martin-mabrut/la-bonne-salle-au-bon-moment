@@ -17,7 +17,7 @@ async function getReservation(id:string){
         }
         setReservation(data);
     }catch(error:any){
-        error && alert("Une erreur est survenue" + error.message);
+        error && console.log("Une erreur est survenue" + error.message);
     }
 }
 
@@ -35,7 +35,7 @@ async function postReservation(reservation:Reservation){
         }
         const data = await res.json()
     }catch(error:any){
-        error && alert("Une erreur est survenue" + error.message);
+        error && console.log("Une erreur est survenue" + error.message);
     }
 }
 
@@ -53,7 +53,7 @@ async function putReservation(id:string, reservation:Reservation){
         }
         const data = await res.json()
     }catch(error:any){
-        error && alert("Une erreur est survenue" + error.message);
+        error && console.log("Une erreur est survenue" + error.message);
     }
 }
 
@@ -70,7 +70,7 @@ async function deleteReservation(id:string){
         }
         const data = await res.json()
     }catch(error:any){
-        error && alert("Une erreur est survenue" + error.message);
+        error && console.log("Une erreur est survenue" + error.message);
     }
 }
 
@@ -83,7 +83,7 @@ async function getReservationList(){
         const data = await res.json();
         setReservationList(data);
     }catch(error:any){
-        error && alert("Une erreur est survenue" + error.message);
+        error && console.log("Une erreur est survenue" + error.message);
     }
 }
 

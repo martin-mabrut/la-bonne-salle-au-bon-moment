@@ -85,9 +85,11 @@ function Dashboard() {
                     <h2>
                         Espace formateur
                     </h2>
-                    <p>
-                        <Link to="/viewreservation">Mes réservations</Link>
-                    </p>
+
+                        <Link to="/viewreservation" >
+                        <button className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white">Mes réservations</button>
+                        </Link>
+                
                 </div>
             )}
 

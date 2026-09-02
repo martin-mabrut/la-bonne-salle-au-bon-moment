@@ -25,9 +25,9 @@ function ViewReservation(){
 
     return(
         <>
-        <Link to="/createreservation"><button>Réserver une salle</button></Link>
+        <Link to="/createreservation"><button className="rounded-md bg-black px-3 py-2 text-sm border-[#FFFFFF] border-2 font-semibold text-white">Réserver une salle</button></Link>
         {reservationList.map((reservation)=>(
-            <ReservationCard key={reservation.id} reservation={reservation}/>
+            <ReservationCard key={reservation.id} reservation={reservation} onChange={getReservationList}/>
         ))}
         </>
     );

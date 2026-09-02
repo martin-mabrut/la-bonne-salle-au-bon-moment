@@ -22,7 +22,7 @@ function UserProvider({ children }: { children?: React.ReactNode }) {
             const data = await res.json();
             setUserList(data);
         }catch(error:any){
-            error && alert("Une erreur est survenue" + error.message);
+            error && console.log("Une erreur est survenue" + error.message);
         }
     }
 
