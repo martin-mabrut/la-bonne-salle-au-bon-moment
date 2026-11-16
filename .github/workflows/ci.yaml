@@ -10,6 +10,8 @@ jobs:
 
       - name: Install ESLint
         run: npm install eslint@8.10.0
+      - name: Npm init
+        run: npm init @eslint/config
       - name: Run ESLint
         run: npm run lint
         continue-on-error: true
