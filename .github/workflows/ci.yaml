@@ -5,11 +5,20 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install modules
-        run: yarn
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Installer les dépendances
+        run: npm ci
+
       - name: Run ESLint
-        run: eslint . --ext .js,.jsx,.ts,.tsx
+        run: npm run lint
 
   test_and_build:
     needs: lint
@@ -27,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Run Tests
-        run: npm test
+        run: npx vitest run
 
       - name: Build
         run: npm run build
