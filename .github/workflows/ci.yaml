@@ -5,16 +5,11 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install ESLint
-        run: npm install eslint@8.10.0
-      - name: Npm init
-        run: npm init @eslint/config
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
       - name: Run ESLint
-        run: npm run lint
-        continue-on-error: true
+        run: eslint . --ext .js,.jsx,.ts,.tsx
 
   test_and_build:
     needs: lint
