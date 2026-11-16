@@ -11,8 +11,8 @@ function UpdateReservation() {
     const context = useContext(UserContext);
     const user = context?.user; 
     const navigate = useNavigate();
-    const {getReservation,postReservation, deleteReservation,getReservationList,reservationList} = useContext(ReservationContext);
-    const {getRoom, postRoom, putRoom,deleteRoom, getRoomList,roomList,...room} = useContext(RoomContext);
+    const {getReservationList} = useContext(ReservationContext);
+    const {getRoomList,roomList} = useContext(RoomContext);
     useEffect(()=>{getRoomList()},[]);
     useEffect(()=>{getReservationList()},[]);
 

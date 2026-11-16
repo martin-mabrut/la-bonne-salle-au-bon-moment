@@ -5,6 +5,10 @@ import { UserContext } from "../context/UserContext";
 function ProtectedRoute() {
     const context = useContext(UserContext);
 
+    if (!context) {
+        return null; // le contexte n'est pas encore disponible
+    }
+
     const { user } = context;
 
     // Pas connecté

@@ -43,11 +43,11 @@ function FormCompte() {
     const { register,
         handleSubmit,
         formState: { errors },
-    } = useForm({
+    } = useForm<z.infer<typeof compteSchema>>({
         resolver: zodResolver(compteSchema),
     });
 
-    async function onSubmit(data) {
+    async function onSubmit(data: z.infer<typeof compteSchema>) {
         console.log(data);
 
         try {
@@ -69,6 +69,7 @@ function FormCompte() {
             console.error('Error:', error);
         }
     };
+
 
 
     return (
@@ -122,7 +123,7 @@ function FormCompte() {
                                         <option value="1">Administrateur</option>
                                         <option value="3">Apprenant</option>
                                     </select>
-                                    {errors.option && (<p>{errors.option.message}</p>)}
+                                    {errors.roleId && (<p>{errors.roleId.message}</p>)}
 
                                 </div>
                             </div>

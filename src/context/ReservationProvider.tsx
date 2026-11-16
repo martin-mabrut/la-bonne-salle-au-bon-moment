@@ -33,7 +33,7 @@ async function postReservation(reservation:Reservation){
         if(!res.ok){
             throw new Error("Erreur lors de la récupération");
         }
-        const data = await res.json()
+        await res.json();
     }catch(error:any){
         error && console.log("Une erreur est survenue" + error.message);
     }
@@ -51,7 +51,7 @@ async function putReservation(id:string, reservation:Reservation){
         if(!res.ok){
             throw new Error("Erreur lors de la récupération");
         }
-        const data = await res.json()
+        await res.json();
     }catch(error:any){
         error && console.log("Une erreur est survenue" + error.message);
     }
@@ -68,7 +68,7 @@ async function deleteReservation(id:string){
         if(!res.ok){
             throw new Error("Erreur lors de la récupération");
         }
-        const data = await res.json()
+        await res.json();
     }catch(error:any){
         error && console.log("Une erreur est survenue" + error.message);
     }

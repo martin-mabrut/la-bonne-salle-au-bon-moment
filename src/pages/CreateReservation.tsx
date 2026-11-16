@@ -8,12 +8,15 @@ import type { User } from "../context/UserContext";
 import { redirect } from "react-router";
 
 function CreateReservation(){
-  const {getReservation,postReservation, putReservation, deleteReservation,getReservationList,reservationList,...reservation} = useContext(ReservationContext);
-  const {getRoom, postRoom, putRoom,deleteRoom, getRoomList,roomList,...room} = useContext(RoomContext);
+  const {postReservation, getReservationList, reservationList} = useContext(ReservationContext);
+  const {getRoomList, roomList} = useContext(RoomContext);
   useEffect(()=>{getRoomList()},[]);
   useEffect(()=>{getReservationList()},[]);
-  const {user, userList,getUserList}=useContext(UserContext);
-  useEffect(()=>{getUserList()},[]);
+  const userContext = useContext(UserContext);
+  const user = userContext?.user ?? null;
+  const userList = userContext?.userList ?? [];
+  const getUserList = userContext?.getUserList;
+  useEffect(()=>{getUserList && getUserList()},[]);
   const[success, setSuccess] = useState(false);
   const [errorForm, setErrorForm] = useState("");
 

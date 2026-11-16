@@ -3,6 +3,11 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { UserContext } from "../context/UserContext";
 
+type LoginFormData = {
+    email: string;
+    password: string;
+};
+
 function LoginUser() {
 
     const context = useContext(UserContext);
@@ -12,11 +17,15 @@ function LoginUser() {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm<LoginFormData>();
+
+    if (!context) {
+        return null;
+    }
 
     const { login } = context;
 
-    async function onSubmit(data) {
+    async function onSubmit(data: LoginFormData) {
         try {
             //Empêche l'email et le mot de passe en clair dans l'url
             const response = await fetch(

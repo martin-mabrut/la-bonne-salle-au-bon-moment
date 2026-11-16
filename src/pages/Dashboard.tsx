@@ -12,6 +12,10 @@ function Dashboard() {
 
     const context = useContext(UserContext);
 
+    if (!context) {
+        return null;
+    }
+
     const {
         user,
         logout,

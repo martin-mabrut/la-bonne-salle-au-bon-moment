@@ -22,7 +22,7 @@ async function postRoom(room:Room){
         },
         body: JSON.stringify(room)
     });
-    const data = await res.json()
+    await res.json();
 }
 
 async function putRoom(id:string, room:Room){
@@ -33,7 +33,7 @@ async function putRoom(id:string, room:Room){
         },
         body: JSON.stringify(room)
     });
-    const data = await res.json()
+    await res.json();
 }
 
 async function deleteRoom(id:string){
@@ -43,7 +43,7 @@ async function deleteRoom(id:string){
         'Content-Type': 'application/json'
         },
     });
-    const data = await res.json()
+    await res.json();
 }
 
 async function getRoomList(){

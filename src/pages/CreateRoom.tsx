@@ -1,12 +1,12 @@
 import { useState } from "react";
-import {useForm} from "react-hook-form";
+import type { ChangeEvent, MouseEvent } from "react";
 
 
 function CreateRoom() {
     const [form, setForm] = useState<{ name?: string, capacity?: number }>();
     const [error, setError] = useState("");
 
-    function handleChange(event) {
+    function handleChange(event: ChangeEvent<HTMLInputElement>) {
         console.log(event.target.value);
         setForm({
             ...form,
@@ -14,7 +14,7 @@ function CreateRoom() {
         });
     }
 
-    function handleSubmit(event) {
+    function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
         event.preventDefault();
 console.log(form?.name);
         if (form?.name == undefined || form?.name.length < 5 ) {
