@@ -34,7 +34,7 @@ name: Install Dependencies
       run: npm ci
 
       
-name: Run Tests
+name: Tests
       run: npm test
 
       
