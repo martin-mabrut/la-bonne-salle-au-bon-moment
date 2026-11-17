@@ -19,14 +19,14 @@ jobs:
       - name: Copier Node.js dans le workspace
         run: cp -a "$(dirname "$(dirname "$(which node)")")" node-local
 
-      - name: Envoyer l'environnement
+      - name: Tar files
+        run: tar -czf environnement.tar.gz node-local node_modules
+
+      - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
-          name: environnement
-          path: |
-            node-local
-            node_modules
-          include-hidden-files: true
+          path: environnement.tar.gz
+          archive: false
 
   lint:
     needs: install
@@ -38,13 +38,12 @@ jobs:
       - name: Télécharger l'environnement
         uses: actions/download-artifact@v8
         with:
-          name: environnement
+          name: environnement.tar.gz
 
-      - name: Ajouter Node.js au PATH
-        run: echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
-
-      - name: Rendre les exécutables lançables
-        run: chmod -R +x node_modules/.bin node-local/bin
+      - name: Décompresser et ajouter Node.js au PATH
+        run: |
+          tar -xzf environnement.tar.gz
+          echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
 
       - name: Run ESLint
         run: npm run lint
@@ -59,13 +58,12 @@ jobs:
       - name: Télécharger l'environnement
         uses: actions/download-artifact@v8
         with:
-          name: environnement
+          name: environnement.tar.gz
 
-      - name: Ajouter Node.js au PATH
-        run: echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
-
-      - name: Rendre les exécutables lançables
-        run: chmod -R +x node_modules/.bin node-local/bin
+      - name: Décompresser et ajouter Node.js au PATH
+        run: |
+          tar -xzf environnement.tar.gz
+          echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
 
       - name: Run Tests
         run: npx vitest run
