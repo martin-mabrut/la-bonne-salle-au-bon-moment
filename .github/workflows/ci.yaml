@@ -2,38 +2,57 @@ name: CI de test pour le Front
 on: [push]
 
 jobs:
+  build:
+    outputs:
+      cache-key: ${{ steps.cache-key.outputs.value }}
+      steps:
+        - id: cache-key
+          run: echo "value=${{ hashFiles('**/package-lock.json')}}" >> $GITHUB_OUTPUT
+
+        - name: Installer Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: "22"
+            cache: "npm"
+
+        - uses: actions/cache@v6
+          with:
+            path: |
+              ~/.npm
+              node_modules
+            key: npm-${{ runner.os }}-${{ hashfile('**/package-lock.json')}}
+            restore-keys: |
+              npm-${{ runner.os }}-
+
+        - name: Install Dependencies
+          run: npm ci
+
   lint:
+    needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/cache@v6
+        with:
+          path: ~/.npm
+          key: npm-${{ needs.build.outputs.cache-key }}
+
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Installer Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: "npm"
-
-      - name: Installer les dépendances
-        run: npm ci
 
       - name: Run ESLint
         run: npm run lint
 
-  test_and_build:
-    needs: lint
+  test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/cache@v6
+        with:
+          path: ~/.npm
+          key: npm-${{ needs.build.outputs.cache-key }}
+
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Installer Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: "npm"
-
-      - name: Install Dependencies
-        run: npm ci
 
       - name: Run Tests
         run: npx vitest run
