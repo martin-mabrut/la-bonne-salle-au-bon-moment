@@ -17,14 +17,14 @@ jobs:
         run: npm ci
 
       - name: Copier Node.js dans le workspace
-        run: cp -a "$(dirname "$(dirname "$(which node)")")" dossier-local
+        run: cp -a "$(dirname "$(dirname "$(which node)")")" node-local
 
       - name: Envoyer l'environnement
         uses: actions/upload-artifact@v7
         with:
           name: environnement
           path: |
-            dossier-local
+            node-local
             node_modules
           include-hidden-files: true
 
@@ -43,6 +43,9 @@ jobs:
       - name: Ajouter Node.js au PATH
         run: echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
 
+      - name: Rendre les exécutables lançables
+        run: chmod -R +x node_modules/.bin node-local/bin
+
       - name: Run ESLint
         run: npm run lint
 
@@ -60,6 +63,9 @@ jobs:
 
       - name: Ajouter Node.js au PATH
         run: echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
+
+      - name: Rendre les exécutables lançables
+        run: chmod -R +x node_modules/.bin node-local/bin
 
       - name: Run Tests
         run: npx vitest run
