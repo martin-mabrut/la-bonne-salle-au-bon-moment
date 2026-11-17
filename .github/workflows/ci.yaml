@@ -16,17 +16,11 @@ jobs:
       - name: Installer les dépendances
         run: npm ci
 
-      - name: Copier Node.js dans le workspace
-        run: cp -a "$(dirname "$(dirname "$(which node)")")" node-local
-
-      - name: Tar files
-        run: tar -czf environnement.tar.gz node-local node_modules
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v7
+      - name: Mettre node_modules en cache réutilisable
+        uses: actions/cache@v5
         with:
-          path: environnement.tar.gz
-          archive: false
+          path: node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
 
   lint:
     needs: install
@@ -35,15 +29,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Télécharger l'environnement
-        uses: actions/download-artifact@v8
+      - name: Installer Node.js
+        uses: actions/setup-node@v7
         with:
-          name: environnement.tar.gz
+          node-version: "22"
 
-      - name: Décompresser et ajouter Node.js au PATH
-        run: |
-          tar -xzf environnement.tar.gz
-          echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
+      - name: Récupérer node_modules depuis le cache
+        uses: actions/cache/restore@v5
+        with:
+          path: node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
 
       - name: Run ESLint
         run: npm run lint
@@ -55,18 +50,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      - name: Télécharger l'environnement
-        uses: actions/download-artifact@v8
+      - name: Installer Node.js
+        uses: actions/setup-node@v7
         with:
-          name: environnement.tar.gz
+          node-version: "22"
 
-      - name: Décompresser et ajouter Node.js au PATH
-        run: |
-          tar -xzf environnement.tar.gz
-          echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
+      - name: Récupérer node_modules depuis le cache
+        uses: actions/cache/restore@v5
+        with:
+          path: node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
 
-      - name: Run Tests
-        run: npx vitest run
+      - name: Tests
+        run: npm test
 
       - name: Build
         run: npm run build
+
+      - name: Envoi du build dans l'artefact
+        uses: actions/upload-artifact@v7
+        with:
+          name: build
+          path: dist
