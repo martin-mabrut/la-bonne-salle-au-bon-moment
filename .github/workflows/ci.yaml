@@ -2,7 +2,7 @@ name: CI de test pour le Front
 on: [push]
 
 jobs:
-  ci:
+  install:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -12,13 +12,54 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: "22"
-          cache: "npm"
 
       - name: Installer les dépendances
         run: npm ci
 
+      - name: Copier Node.js dans le workspace
+        run: cp -a "$(dirname "$(dirname "$(which node)")")" dossier-local
+
+      - name: Envoyer l'environnement
+        uses: actions/upload-artifact@v7
+        with:
+          name: environnement
+          path: |
+            dossier-local
+            node_modules
+          include-hidden-files: true
+
+  lint:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Télécharger l'environnement
+        uses: actions/download-artifact@v8
+        with:
+          name: environnement
+
+      - name: Ajouter Node.js au PATH
+        run: echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
+
       - name: Run ESLint
         run: npm run lint
+
+  test_and_build:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Télécharger l'environnement
+        uses: actions/download-artifact@v8
+        with:
+          name: environnement
+
+      - name: Ajouter Node.js au PATH
+        run: echo "$PWD/node-local/bin" >> "$GITHUB_PATH"
 
       - name: Run Tests
         run: npx vitest run
