@@ -3,6 +3,7 @@ on: [push]
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     outputs:
       cache-key: ${{ steps.cache-key.outputs.value }}
       steps:
